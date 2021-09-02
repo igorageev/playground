@@ -1,0 +1,19 @@
+.refresh .v-input__icon--append .v-icon {
+    color: #1B7AD2;
+}
+
+.v-input--is-disabled.v-text-field--outlined fieldset {
+    border-style: dashed;
+}
+
+.theme--light.v-expansion-panels.v-expansion-panels--focusable .v-expansion-panel-header--active:before,
+.theme--light.v-expansion-panels.v-expansion-panels--focusable .v-expansion-panel-header--active:hover:before,
+.theme--light.v-expansion-panels.v-expansion-panels--focusable .v-expansion-panel-header:focus:before {
+    opacity: .05;
+}
+
+.theme--dark.v-expansion-panels.v-expansion-panels--focusable .v-expansion-panel-header--active:before,
+.theme--dark.v-expansion-panels.v-expansion-panels--focusable .v-expansion-panel-header--active:hover:before,
+.theme--dark.v-expansion-panels.v-expansion-panels--focusable .v-expansion-panel-header:focus:before {
+    opacity: .1;
+}

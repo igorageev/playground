@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн конвертация валют</title>
+
+    <link rel='stylesheet' href='assets/css/roboto.css'>
+    <link rel='stylesheet' href='assets/css/materialdesignicons.css'>
+    <link rel='stylesheet' href='assets/css/vuetify.css'>
+    <link rel='stylesheet' href='assets/css/override.css'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+</head>
+
+<body>
+
+    <div id="app" style="visibility:hidden;">
+        <v-app :dark="setTheme">
+            <v-navigation-drawer v-model="drawer" app temporary width="80%">
+
+                <v-list>
+                    <v-list-item>
+                        <v-avatar size="64">
+                            <img src="assets/img/avatars/petrov.jpg" alt="Петров">
+                        </v-avatar>
+                    </v-list-item>
+
+                    <v-list-item link>
+                        <v-list-item-content>
+                            <v-list-item-title class="text-h6">
+                                Александр Петров
+                            </v-list-item-title>
+                            <v-list-item-subtitle>user@bifit.com</v-list-item-subtitle>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+
+                <v-divider></v-divider>
+
+                <v-list nav dense>
+                    <v-list-item-group>
+
+                        <!-- <v-list-item :href="'info.html'">
+                            <v-list-item-icon>
+                                <v-icon>mdi-clipboard-outline</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Вступление</v-list-item-title>
+                        </v-list-item> -->
+
+                        <v-list-item>
+                            <v-list-item-icon>
+                                <v-icon>mdi-select-compare</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Традиционный вид</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item :href="'online-conversion-borderless.html'">
+                            <v-list-item-icon>
+                                <v-icon>mdi-select-off</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Минималистичный вид</v-list-item-title>
+                        </v-list-item>
+
+                        <v-list-item :href="'https://forms.gle/FrUvwFVfhf2DS9US7'">
+                            <v-list-item-icon>
+                                <v-icon>mdi-message-processing-outline</v-icon>
+                            </v-list-item-icon>
+                            <v-list-item-title>Поделиться мнением</v-list-item-title>
+                        </v-list-item>
+
+                    </v-list-item-group>
+                </v-list>
+
+                <template v-slot:append>
+                  <v-list nav dense>
+                    <v-list-item-group>
+                      <v-list-item>
+                        <v-list-item-action>
+                          <v-switch v-model="goDark" dense></v-switch>
+                        </v-list-item-action>
+
+                        <v-list-item-content>
+                          <v-list-item-title>Темная тема</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list-item-group>
+                  </v-list>
+                </template>
+
+            </v-navigation-drawer>
+
+            <v-app-bar app color="primary" dark>
+                <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+                <v-toolbar-title>Онлайн конвертация валют</v-toolbar-title>
+                <v-spacer></v-spacer>
+
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+            </v-app-bar>
+
+            <v-main>
+                <v-container fluid ma-0 pa-0>
+
+                    <v-expansion-panels accordion multiple focusable v-model="panel">
+
+                        <v-expansion-panel expand>
+                            <v-expansion-panel-header>
+                                Условия конвертации
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content>
+
+                                <v-radio-group
+                                    class="mb-2" 
+                                    v-model="doc.isSale" 
+                                    row 
+                                    mandatory>
+                                    <v-radio label="Продать" value="1" class="mr-10"></v-radio>
+                                    <v-radio label="Купить" value="0"></v-radio>
+                                </v-radio-group>
+
+                                <v-row>
+
+                                    <v-col cols="8" class="pb-0">
+                                        <v-text-field
+                                            v-model="doc.sale_amount"
+                                            outlined
+                                            label="Сумма продажи"
+                                            :disabled="doc.isSale == 0"
+                                            @keyup="formatCurrency('sale_amount'); calculatePurchase()">
+                                        </v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="4" class="pb-0">
+                                        <v-select
+                                            v-model="doc.sale_currency"
+                                            :items="currencies"
+                                            item-value="id"
+                                            item-text="name"
+                                            outlined 
+                                            label="Валюта">
+                                        </v-select>
+                                    </v-col>
+
+                                </v-row>
+
+                                <v-row class="mt-0">
+
+                                    <v-col cols="8" class="pb-3">
+                                        <v-text-field 
+                                            v-model="doc.purchase_amount"
+                                            outlined
+                                            label="Сумма покупки"
+                                            :disabled="doc.isSale == 1"
+                                            @keyup="formatCurrency('purchase_amount'); calculateSale()">
+                                        </v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="4" class="pb-3">
+                                        <v-select 
+                                            v-model="doc.purchase_currency"
+                                            :items="currencies" 
+                                            item-value="id" 
+                                            item-text="name" 
+                                            outlined 
+                                            label="Валюта" >
+                                        </v-select>
+                                    </v-col>
+
+                                </v-row>
+
+                                <v-select 
+                                    :items="bills"
+                                    outlined
+                                    label="Счет списания">
+                                </v-select>
+
+                                <v-select 
+                                    :items="bills"
+                                    outlined
+                                    label="Счет зачисления">
+                                </v-select>
+
+                                <v-text-field
+                                    value="1 € = 1.18 $"
+                                    class="refresh"
+                                    append-icon="mdi-refresh" 
+                                    outlined 
+                                    readonly 
+                                    label="Курс" 
+                                    hint="Подпишите докумет в течении 2 мин. 56 сек." 
+                                    persistent-hint 
+                                    type="text">
+                                </v-text-field>
+
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+
+                        <v-expansion-panel>
+                            <v-expansion-panel-header>
+                                Комиссия
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content class="mt-7">
+
+
+                                <v-select 
+                                    :items="bills"
+                                    outlined
+                                    label="Списывается со счета" >
+                                </v-select>
+
+                                <v-text-field 
+                                    v-model="doc.commission_currency"
+                                    outlined
+                                    disabled
+                                    label="В валюте" >
+                                </v-text-field>
+
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+
+
+                        <v-expansion-panel>
+                            <v-expansion-panel-header>
+                                Реквизиты поручения
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content>
+
+                                <v-row class="mt-4">
+
+                                    <v-col cols="6">
+                                        <v-text-field
+                                            outlined
+                                            label="Номер документа">
+                                        </v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="6">
+
+                                        <v-dialog 
+                                            ref="dialog" 
+                                            v-model="modal" 
+                                            :return-value.sync="date"
+                                            persistent 
+                                            width="290px">
+
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-text-field
+                                                    v-model="dateFormatted"
+                                                    append-icon="mdi-menu-down"
+                                                    readonly
+                                                    outlined
+                                                    label="Дата"
+                                                    v-bind="attrs"
+                                                    v-on="on">
+                                                </v-text-field>
+                                            </template>
+
+                                            <v-date-picker v-model="date" locale="ru-RU" scrollable>
+                                                <v-spacer></v-spacer>
+                                                <v-btn 
+                                                    text 
+                                                    color="primary" 
+                                                    @click="modal = false">
+                                                    Отмена
+                                                </v-btn>
+                                                <v-btn 
+                                                    text 
+                                                    color="primary" 
+                                                    @click="$refs.dialog.save(date)">
+                                                    Применить
+                                                </v-btn>
+                                            </v-date-picker>
+                                        </v-dialog>
+
+                                    </v-col>
+
+                                </v-row>
+
+                                <v-text-field 
+                                    v-model="doc.bank"
+                                    outlined
+                                    disabled 
+                                    label="Банк">
+                                </v-text-field>
+
+                                <v-text-field 
+                                    v-model="doc.client" 
+                                    outlined
+                                    disabled
+                                    label="Клиент">
+                                </v-text-field>
+
+                                <v-text-field 
+                                    v-model="doc.inn"
+                                    outlined
+                                    disabled
+                                    label="ИНН">
+                                </v-text-field>
+
+                                <v-text-field 
+                                    v-model="doc.okpo" 
+                                    outlined
+                                    disabled
+                                    label="ОКПО">
+                                </v-text-field>
+
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+
+                        <v-expansion-panel>
+                            <v-expansion-panel-header>
+                                Комментарий клиента
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content>
+                                <v-row class="mt-4">
+                                    <v-col>
+                                        <v-textarea 
+                                            outlined
+                                            label="Комментарий">
+                                        </v-textarea>
+                                    </v-col>
+                                </v-row>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+
+                    </v-expansion-panels>
+
+                </v-container>
+            </v-main>
+
+        </v-app>
+    </div>
+
+    <script src='assets/vendors/vue/vue.js'></script>
+    <script src='assets/vendors/vuetify/vuetify.js'></script>
+    <script src="assets/js/online-conversion.js"></script>
+
+</body>
+
+</html>

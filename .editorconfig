@@ -1,0 +1,9 @@
+# Indentation override for all JS
+[*.js]
+indent_style = space
+tab_width = 2
+
+# Indentation override for all JS under lib directory
+[*.html]
+indent_style = space
+tab_width = 4
