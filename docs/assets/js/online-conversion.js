@@ -48,7 +48,6 @@ new Vue({
     }
   },
   mounted() {
-    console.log(this.$el.textContent) // I'm text inside the component.
     document.getElementById('app').style.visibility = "visible";
   },
   watch: {
