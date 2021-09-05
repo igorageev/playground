@@ -73,21 +73,18 @@
                     </v-list-item-group>
                 </v-list>
 
-                <template v-slot:append>
-                  <v-list nav dense>
-                    <v-list-item-group>
-                      <v-list-item>
-                        <v-list-item-action>
-                          <v-switch v-model="goDark" dense></v-switch>
-                        </v-list-item-action>
+                <v-divider class="mt-4"></v-divider>
 
-                        <v-list-item-content>
-                          <v-list-item-title>Темная тема</v-list-item-title>
-                        </v-list-item-content>
-                      </v-list-item>
+                <v-list nav dense>
+                    <v-list-item-group>
+                        <v-list-item>
+                            <v-list-item-action class="mr-6">
+                                <v-switch v-model="goDark" dense></v-switch>
+                            </v-list-item-action>
+                            <v-list-item-title>BLM режим</v-list-item-title>
+                        </v-list-item>
                     </v-list-item-group>
-                  </v-list>
-                </template>
+                </v-list>
 
             </v-navigation-drawer>
 

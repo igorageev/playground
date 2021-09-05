@@ -140,7 +140,6 @@
                                             label="Валюта"
                                             absolute
                                             full-width>
-                                            <!-- :menu-props="{ top: true, offsetY: true, }" -->
                                             <template slot='selection' slot-scope='{ item }'>
                                                 {{ item.name }}
                                             </template>
@@ -159,7 +158,6 @@
                                             </template>
                                         </v-select>
                                     </v-col>
-
                                 </v-row>
 
                                 <v-row class="mt-0">
@@ -184,7 +182,6 @@
                                             label="Валюта"
                                             absolute
                                             full-width>
-                                            <!-- :menu-props="{ top: true, offsetY: true, }" -->
                                             <template slot='selection' slot-scope='{ item }'>
                                                 {{ item.name }}
                                             </template>
@@ -193,9 +190,9 @@
                                                     <v-list-item-content>
                                                       <v-list-item-title>
                                                         <v-row no-gutters align="center">
-                                                        <span>{{ item.name }}</span>
-                                                        <v-spacer></v-spacer>
-                                                        {{ item.code }}
+                                                            <span>{{ item.name }}</span>
+                                                            <v-spacer></v-spacer>
+                                                            {{ item.code }}
                                                         </v-row>
                                                       </v-list-item-title>
                                                     </v-list-item-content>
@@ -220,9 +217,9 @@
                                             <v-list-item-content>
                                                 <v-list-item-title>
                                                     <v-row no-gutters align="center">
-                                                    <span>{{ item.id }}</span>
-                                                    <v-spacer></v-spacer>
-                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                        <span>{{ item.id }}</span>
+                                                        <v-spacer></v-spacer>
+                                                        <span class="text--secondary">{{ item.amount }}</span>
                                                     </v-row>
                                                 </v-list-item-title>
                                                 <v-list-item-subtitle>
@@ -247,9 +244,9 @@
                                             <v-list-item-content>
                                                 <v-list-item-title>
                                                     <v-row no-gutters align="center">
-                                                    <span>{{ item.id }}</span>
-                                                    <v-spacer></v-spacer>
-                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                        <span>{{ item.id }}</span>
+                                                        <v-spacer></v-spacer>
+                                                        <span class="text--secondary">{{ item.amount }}</span>
                                                     </v-row>
                                                 </v-list-item-title>
                                                 <v-list-item-subtitle>
@@ -263,7 +260,7 @@
                                 <v-text-field
                                     value="1 € = 1.18 $"
                                     class="refresh"
-                                    append-icon="mdi-refresh" 
+                                    append-icon="mdi-refresh"
                                     outlined 
                                     readonly 
                                     label="Курс" 
@@ -296,9 +293,9 @@
                                             <v-list-item-content>
                                                 <v-list-item-title>
                                                     <v-row no-gutters align="center">
-                                                    <span>{{ item.id }}</span>
-                                                    <v-spacer></v-spacer>
-                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                        <span>{{ item.id }}</span>
+                                                        <v-spacer></v-spacer>
+                                                        <span class="text--secondary">{{ item.amount }}</span>
                                                     </v-row>
                                                 </v-list-item-title>
                                                 <v-list-item-subtitle>
