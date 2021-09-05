@@ -73,18 +73,21 @@
                     </v-list-item-group>
                 </v-list>
 
-                <v-divider class="mt-4"></v-divider>
-
-                <v-list nav dense>
+                <template v-slot:append>
+                  <v-list nav dense>
                     <v-list-item-group>
-                        <v-list-item>
-                            <v-list-item-action class="mr-6">
-                                <v-switch v-model="goDark" dense></v-switch>
-                            </v-list-item-action>
-                            <v-list-item-title>BLM режим</v-list-item-title>
-                        </v-list-item>
+                      <v-list-item>
+                        <v-list-item-action>
+                          <v-switch v-model="goDark" dense></v-switch>
+                        </v-list-item-action>
+
+                        <v-list-item-content>
+                          <v-list-item-title>Темная тема</v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
                     </v-list-item-group>
-                </v-list>
+                  </v-list>
+                </template>
 
             </v-navigation-drawer>
 
@@ -169,15 +172,55 @@
                                 </v-row>
 
                                 <v-select 
-                                    :items="bills"
-                                    
+                                    :items="accountsEUR"
+                                    item-value="id"
+                                    item-text="id"
                                     label="Счет списания">
+                                    <template slot='selection' slot-scope='{ item }'>
+                                        {{ item.id }}
+                                    </template>
+                                    <template v-slot:item="{ active, item, attrs, on }">
+                                        <v-list-item v-on="on" v-bind="attrs" #default="{ active }" two-line>
+                                            <v-list-item-content>
+                                                <v-list-item-title>
+                                                    <v-row no-gutters align="center">
+                                                    <span>{{ item.id }}</span>
+                                                    <v-spacer></v-spacer>
+                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                    </v-row>
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ item.target }}
+                                                </v-list-item-subtitle>
+                                            </v-list-item-content>
+                                          </v-list-item>
+                                    </template>
                                 </v-select>
 
                                 <v-select 
-                                    :items="bills"
-                                    
+                                    :items="accountsUSD"
+                                    item-value="id"
+                                    item-text="id"
                                     label="Счет зачисления">
+                                    <template slot='selection' slot-scope='{ item }'>
+                                        {{ item.id }}
+                                    </template>
+                                    <template v-slot:item="{ active, item, attrs, on }">
+                                        <v-list-item v-on="on" v-bind="attrs" #default="{ active }" two-line>
+                                            <v-list-item-content>
+                                                <v-list-item-title>
+                                                    <v-row no-gutters align="center">
+                                                    <span>{{ item.id }}</span>
+                                                    <v-spacer></v-spacer>
+                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                    </v-row>
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ item.target }}
+                                                </v-list-item-subtitle>
+                                            </v-list-item-content>
+                                          </v-list-item>
+                                    </template>
                                 </v-select>
 
                                 <v-text-field
@@ -203,9 +246,30 @@
 
 
                                 <v-select 
-                                    :items="bills"
-                                    
-                                    label="Списывается со счета" >
+                                    :items="accountsEUR"
+                                    item-value="id"
+                                    item-text="id"
+                                    @focus="changeCurrency('EUR')"
+                                    label="Списывается со счета">
+                                    <template slot='selection' slot-scope='{ item }'>
+                                        {{ item.id }}
+                                    </template>
+                                    <template v-slot:item="{ active, item, attrs, on }">
+                                        <v-list-item v-on="on" v-bind="attrs" #default="{ active }" two-line>
+                                            <v-list-item-content>
+                                                <v-list-item-title>
+                                                    <v-row no-gutters align="center">
+                                                    <span>{{ item.id }}</span>
+                                                    <v-spacer></v-spacer>
+                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                    </v-row>
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ item.target }}
+                                                </v-list-item-subtitle>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </template>
                                 </v-select>
 
                                 <v-text-field 

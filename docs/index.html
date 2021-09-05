@@ -137,7 +137,26 @@
                                             item-value="id"
                                             item-text="name"
                                             outlined 
-                                            label="Валюта">
+                                            label="Валюта"
+                                            absolute
+                                            full-width>
+                                            <!-- :menu-props="{ top: true, offsetY: true, }" -->
+                                            <template slot='selection' slot-scope='{ item }'>
+                                                {{ item.name }}
+                                            </template>
+                                            <template v-slot:item="{ active, item, attrs, on }">
+                                                <v-list-item v-on="on" v-bind="attrs" #default="{ active }">
+                                                    <v-list-item-content>
+                                                      <v-list-item-title>
+                                                        <v-row no-gutters align="center">
+                                                        <span>{{ item.name }}</span>
+                                                        <v-spacer></v-spacer>
+                                                        {{ item.code }}
+                                                        </v-row>
+                                                      </v-list-item-title>
+                                                    </v-list-item-content>
+                                                  </v-list-item>
+                                            </template>
                                         </v-select>
                                     </v-col>
 
@@ -156,28 +175,89 @@
                                     </v-col>
 
                                     <v-col cols="4" class="pb-3">
-                                        <v-select 
+                                        <v-select
                                             v-model="doc.purchase_currency"
-                                            :items="currencies" 
-                                            item-value="id" 
-                                            item-text="name" 
+                                            :items="currencies"
+                                            item-value="id"
+                                            item-text="name"
                                             outlined 
-                                            label="Валюта" >
+                                            label="Валюта"
+                                            absolute
+                                            full-width>
+                                            <!-- :menu-props="{ top: true, offsetY: true, }" -->
+                                            <template slot='selection' slot-scope='{ item }'>
+                                                {{ item.name }}
+                                            </template>
+                                            <template v-slot:item="{ active, item, attrs, on }">
+                                                <v-list-item v-on="on" v-bind="attrs" #default="{ active }">
+                                                    <v-list-item-content>
+                                                      <v-list-item-title>
+                                                        <v-row no-gutters align="center">
+                                                        <span>{{ item.name }}</span>
+                                                        <v-spacer></v-spacer>
+                                                        {{ item.code }}
+                                                        </v-row>
+                                                      </v-list-item-title>
+                                                    </v-list-item-content>
+                                                  </v-list-item>
+                                            </template>
                                         </v-select>
                                     </v-col>
 
                                 </v-row>
 
                                 <v-select 
-                                    :items="bills"
+                                    :items="accountsEUR"
+                                    item-value="id"
+                                    item-text="id"
                                     outlined
                                     label="Счет списания">
+                                    <template slot='selection' slot-scope='{ item }'>
+                                        {{ item.id }}
+                                    </template>
+                                    <template v-slot:item="{ active, item, attrs, on }">
+                                        <v-list-item v-on="on" v-bind="attrs" #default="{ active }" two-line>
+                                            <v-list-item-content>
+                                                <v-list-item-title>
+                                                    <v-row no-gutters align="center">
+                                                    <span>{{ item.id }}</span>
+                                                    <v-spacer></v-spacer>
+                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                    </v-row>
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ item.target }}
+                                                </v-list-item-subtitle>
+                                            </v-list-item-content>
+                                          </v-list-item>
+                                    </template>
                                 </v-select>
 
                                 <v-select 
-                                    :items="bills"
+                                    :items="accountsUSD"
+                                    item-value="id"
+                                    item-text="id"
                                     outlined
                                     label="Счет зачисления">
+                                    <template slot='selection' slot-scope='{ item }'>
+                                        {{ item.id }}
+                                    </template>
+                                    <template v-slot:item="{ active, item, attrs, on }">
+                                        <v-list-item v-on="on" v-bind="attrs" #default="{ active }" two-line>
+                                            <v-list-item-content>
+                                                <v-list-item-title>
+                                                    <v-row no-gutters align="center">
+                                                    <span>{{ item.id }}</span>
+                                                    <v-spacer></v-spacer>
+                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                    </v-row>
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ item.target }}
+                                                </v-list-item-subtitle>
+                                            </v-list-item-content>
+                                          </v-list-item>
+                                    </template>
                                 </v-select>
 
                                 <v-text-field
@@ -201,11 +281,32 @@
                             </v-expansion-panel-header>
                             <v-expansion-panel-content class="mt-7">
 
-
                                 <v-select 
-                                    :items="bills"
+                                    :items="accountsEUR"
+                                    item-value="id"
+                                    item-text="id"
                                     outlined
-                                    label="Списывается со счета" >
+                                    @focus="changeCurrency('EUR')"
+                                    label="Списывается со счета">
+                                    <template slot='selection' slot-scope='{ item }'>
+                                        {{ item.id }}
+                                    </template>
+                                    <template v-slot:item="{ active, item, attrs, on }">
+                                        <v-list-item v-on="on" v-bind="attrs" #default="{ active }" two-line>
+                                            <v-list-item-content>
+                                                <v-list-item-title>
+                                                    <v-row no-gutters align="center">
+                                                    <span>{{ item.id }}</span>
+                                                    <v-spacer></v-spacer>
+                                                    <span class="text--secondary">{{ item.amount }}</span>
+                                                    </v-row>
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ item.target }}
+                                                </v-list-item-subtitle>
+                                            </v-list-item-content>
+                                        </v-list-item>
+                                    </template>
                                 </v-select>
 
                                 <v-text-field 

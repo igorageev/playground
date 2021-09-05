@@ -5,26 +5,62 @@ new Vue({
       drawer: null,
       goDark: false,
       panel: [0, 1, 2, 3],
+      currencyFilter: '',
 
-      bills: [
-        '40702978400000000027',
-        '40702978400000000028',
-        '40802840900000005643',
-        '40802840900000001122',
+      accounts: [
+        {
+          id: '40702978400000000027',
+          amount: '7 065 691.38 €',
+          target: 'расчетный',
+          currency: 'EUR'
+        },
+        {
+          id: '40702978400000000028',
+          amount: '7 065 691.38 €',
+          target: 'специальный',
+          currency: 'EUR'
+        },
+        {
+          id: '40702978400000000029',
+          amount: '7 065 691.38 €',
+          target: 'специальный',
+          currency: 'EUR'
+        },
+        {
+          id: '40802840900000005643',
+          amount: '10 065 000.00 $',
+          target: 'расчетный',
+          currency: 'USD'
+        },
+        {
+          id: '40802840900000003876',
+          amount: '10 065 000.00 $',
+          target: 'расчетный',
+          currency: 'USD'
+        },
+        {
+          id: '40802840900000001122',
+          amount: '165 432.00 $',
+          target: 'специальный',
+          currency: 'USD'
+        }
       ],
 
       currencies: [
         {
           id: 0,
-          name: 'EUR'
+          name: 'EUR',
+          code: '978'
         },
         {
           id: 1,
-          name: 'USD'
+          name: 'USD',
+          code: '840'
         },
         {
           id: 2,
-          name: 'RUB'
+          name: 'RUB',
+          code: '643'
         }
       ],
       menu: false,
@@ -56,6 +92,11 @@ new Vue({
     },
   },
   methods: {
+    changeCurrency(a) {
+      //this.$router.push({path: a })
+      this.currencyFilter = a;
+      console.log(this.currencyFilter);
+    },
     // Пересчитать сумму покупки
     calculatePurchase() {
       if (this.doc.sale_amount == '') {
@@ -121,5 +162,15 @@ new Vue({
     computedDateFormatted() {
       return this.formatDate(this.date)
     },
+    accountsUSD() {
+      return this.accounts.filter((item) =>{
+           return item.currency == 'USD'
+      })
+    },
+    accountsEUR() {
+      return this.accounts.filter((item) =>{
+           return item.currency == 'EUR'
+      })
+    }
   }
 });
