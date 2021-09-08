@@ -9,20 +9,26 @@ new Vue({
         {
           avatar: 'mdi-plus',
           color: 'green lighten-3',
-          title: '762<span class="grey--text">.77</span> ',
-          subtitle: `НКО "Фонд капитального ремонта дорог заполярного края"`,
+          title: '762<span class="grey--text">.00</span> ',
+          object: 'НКО "Фонд капитального ремонта дорог заполярного края"',
+          subtitle: 'НКО "Фонд капитального ремонта дорог заполярного края"',
+          action: 'Поступление на счет'
         },
         {
           avatar: 'mdi-minus',
           color: 'red lighten-3',
           title: '10 000<span class="grey--text">.00</span> ',
+          object: 'ООО "Эс как доллар"',
           subtitle: `ООО "Эс как доллар"`,
+          action: 'Перевод со счета'
         },
         {
           avatar: 'mdi-undo-variant',
           color: 'blue lighten-3',
           title: '3 000<span class="grey--text">.00</span> ',
+          object: 'ООО "ПроКоммерцБанк"',
           subtitle: 'Снятие наличных',
+          action: 'Снятие наличных',
         },
         { divider: true, inset: true },
         { header: '07.09.2021' },
@@ -30,45 +36,59 @@ new Vue({
           avatar: 'mdi-plus',
           color: 'green lighten-3',
           title: '762<span class="grey--text">.77</span> ',
+          object: 'ООО "Ах, уедь!"',
           subtitle: `ООО "Ах, уедь!"`,
+          action: 'Поступление на счет'
         },
         {
           avatar: 'mdi-minus',
           color: 'red lighten-3',
           title: '10 000<span class="grey--text">.00</span> ',
+          object: 'Управление Федерального казначейства по г. Москве',
           subtitle: `Управление Федерального казначейства по г. Москве`,
+          action: 'Перевод со счета'
         },
         {
           avatar: 'mdi-undo-variant',
           color: 'blue lighten-3',
           title: '11 000<span class="grey--text">.00</span> ',
+          object: 'ООО "ПроКоммерцБанк"',
           subtitle: 'Покупка валюты',
+          action: 'Покупка валюты'
         },
         {
           avatar: 'mdi-minus',
           color: 'red lighten-3',
           title: '100 000<span class="grey--text">.00</span> ',
+          object: 'ООО "Лучше наличными"',
           subtitle: `ООО "Лучше наличными"`,
+          action: 'Перевод со счета'
         },
         { divider: true, inset: true },
         { header: '06.09.2021' },
         {
           avatar: 'mdi-plus',
           color: 'green lighten-3',
-          title: '1 000<span class="grey--text">.77</span> ',
+          title: '1 000<span class="grey--text">.00</span> ',
+          object: 'НКО "Все будет хорошо"',
           subtitle: `НКО "Все будет хорошо"`,
+          action: 'Поступление на счет'
         },
         {
           avatar: 'mdi-minus',
           color: 'red lighten-3',
           title: '10 000<span class="grey--text">.00</span> ',
+          object: 'ООО "Эс как доллар"',
           subtitle: `ООО "Эс как доллар"`,
+          action: 'Перевод со счета'
         },
         {
           avatar: 'mdi-undo-variant',
           color: 'blue lighten-3',
           title: '3 000<span class="grey--text">.00</span> ',
-          subtitle: 'продажа валюты',
+          object: 'ООО "ПроКоммерцБанк"',
+          subtitle: 'Снятие наличных',
+          action: 'Снятие наличных'
         },
       ],
     }

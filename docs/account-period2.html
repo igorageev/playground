@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн конвертация валют</title>
+
+    <link rel='stylesheet' href='assets/css/roboto.css'>
+    <link rel='stylesheet' href='assets/css/materialdesignicons.css'>
+    <link rel='stylesheet' href='assets/css/vuetify.css'>
+    <link rel='stylesheet' href='assets/css/override.css'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+</head>
+
+<body>
+
+    <div id="app" style="visibility:hidden" >
+        <v-app :dark="setTheme">
+
+            <v-app-bar app color="primary" dark>
+                <v-btn icon>
+                    <v-icon>mdi-arrow-left</v-icon>
+                </v-btn>
+                
+                <v-toolbar-title>40702 810 2 7105 4440370</v-toolbar-title>
+                <v-spacer></v-spacer>
+
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+
+                <template v-slot:extension>
+                    <v-tabs
+                      v-model="tab"
+                      grow
+                    >
+                      <v-tabs-slider color="yellow"></v-tabs-slider>
+            
+                      <v-tab
+                        v-for="item in tabs"
+                        :key="item"
+                      >
+                        {{ item }}
+                      </v-tab>
+                    </v-tabs>
+                  </template>
+            </v-app-bar>
+
+            <v-main>
+
+                <v-toolbar
+                    color="blue-grey lighten-5"
+                    flat
+                    app
+                >
+                    Входящий остаток: <v-spacer></v-spacer>500 000.00
+                </v-toolbar>
+
+                <v-list two-line>
+                    <template v-for="(item, index) in items">
+                      <v-subheader
+                        v-if="item.header"
+                        :key="item.header"
+                        v-text="item.header"
+                        inset
+                      ></v-subheader>
+              
+                      <v-divider
+                        v-else-if="item.divider"
+                        :key="index"
+                        :inset="item.inset"
+                        class="mt-4"
+                      ></v-divider>
+              
+                      <v-list-item
+                        v-else
+                        :key="item.title"
+                      >
+
+                        <v-list-item-avatar :color="item.color">
+                            <v-icon
+                              
+                              dark
+                            >
+                              {{ item.avatar }}
+                            </v-icon>
+                        </v-list-item-avatar>
+              
+                        <v-list-item-content>
+                          <v-list-item-title >
+                            {{ item.object }}
+                          </v-list-item-title>
+                          <v-list-item-subtitle v-html="item.action"></v-list-item-subtitle>
+                        </v-list-item-content>
+
+                        <v-list-item-action class="pl-5 mt-0 mb-4" v-html="item.title">
+                        </v-list-item-action>
+
+                      </v-list-item>
+                    </template>
+                  </v-list>
+
+            </v-main>
+
+            <v-footer
+                color="blue-grey lighten-5"
+                flat
+                app
+                fixed
+                class="py-4"
+            >
+                Исходящий остаток: <v-spacer></v-spacer>500 000.00
+            </v-footer>
+
+        </v-app>
+    </div>
+
+    <script src='assets/vendors/vue/vue.js'></script>
+    <script src='assets/vendors/vuetify/vuetify.js'></script>
+    <script src="assets/js/account-period.js"></script>
+
+</body>
+
+</html>
