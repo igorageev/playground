@@ -55,7 +55,7 @@
                     flat
                     app
                 >
-                    Входящий остаток: <v-spacer></v-spacer>500 000.00
+                    <span class="text--secondary ml-14">Входящий остаток:</span> <v-spacer></v-spacer>500 000<span class="grey--text">.00</span>
                 </v-toolbar>
 
                 <v-list two-line>
@@ -90,7 +90,7 @@
               
                         <v-list-item-content>
                           <v-list-item-title >
-                            {{ item.object }}
+                            {{ item.subtitle}}
                           </v-list-item-title>
                           <v-list-item-subtitle v-html="item.action"></v-list-item-subtitle>
                         </v-list-item-content>
@@ -111,7 +111,7 @@
                 fixed
                 class="py-4"
             >
-                Исходящий остаток: <v-spacer></v-spacer>500 000.00
+                <span class="text--secondary ml-14">Исходящий остаток:</span> <v-spacer></v-spacer>500 000<span class="grey--text">.00</span>
             </v-footer>
 
         </v-app>
