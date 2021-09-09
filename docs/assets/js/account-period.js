@@ -28,7 +28,7 @@ new Vue({
           title: '3 000<span class="grey--text">.00</span> ',
           object: 'ООО "ПроКоммерцБанк"',
           subtitle: 'Снятие наличных',
-          action: 'Снятие наличных',
+          action: 'ООО "ПроКоммерцБанк"',
         },
         { divider: true, inset: true },
         { header: '07.09.2021' },
@@ -54,7 +54,7 @@ new Vue({
           title: '11 000<span class="grey--text">.00</span> ',
           object: 'ООО "ПроКоммерцБанк"',
           subtitle: 'Покупка валюты',
-          action: 'Покупка валюты'
+          action: 'ООО "ПроКоммерцБанк"'
         },
         {
           avatar: 'mdi-minus',
@@ -88,7 +88,7 @@ new Vue({
           title: '3 000<span class="grey--text">.00</span> ',
           object: 'ООО "ПроКоммерцБанк"',
           subtitle: 'Снятие наличных',
-          action: 'Снятие наличных'
+          action: 'ООО "ПроКоммерцБанк"'
         },
       ],
     }
