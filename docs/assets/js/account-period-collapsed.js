@@ -3,6 +3,7 @@ new Vue({
   data() {
     return {
       tab: 2,
+      panel: [0,1],
       tabs: [
         {id:0, title:'сегодня'}, 
         {id:1, title:'вчера'}, 
@@ -10,8 +11,8 @@ new Vue({
       ],
       activeTab: 2,
       items: [
-        { header: '08 сентября 2021', amount: '+762<span class="text--disabled">.00&nbsp; / </span>&nbsp;–13 000<span class="text--disabled">.00</span>' },
         {
+          id: 0,
           avatar: 'mdi-plus',
           color: 'green lighten-3',
           title: '<span class="green--text">+</span>&nbsp;762<span class="grey--text">.00</span> ',
@@ -20,6 +21,7 @@ new Vue({
           action: 'Поступление на счет'
         },
         {
+          id: 1,
           avatar: 'mdi-minus',
           color: 'red lighten-3',
           title: '<span class="red--text">–</span>&nbsp;10 000<span class="grey--text">.00</span> ',
@@ -28,6 +30,7 @@ new Vue({
           action: 'Перевод со счета'
         },
         {
+          id: 2,
           avatar: 'mdi-undo-variant',
           color: 'blue lighten-3',
           title: '<span class="red--text">–</span>&nbsp;3 000<span class="grey--text">.00</span> ',
@@ -35,9 +38,8 @@ new Vue({
           subtitle: 'Снятие наличных',
           action: 'ООО "ПроКоммерцБанк"',
         },
-        { divider: true, inset: true },
-        { header: '07 сентября 2021', amount: '+762<span class="text--disabled">.00&nbsp; / </span>&nbsp;–21 000<span class="text--disabled">.00</span>' },
         {
+          id: 3,
           avatar: 'mdi-plus',
           color: 'green lighten-3',
           title: '<span class="green--text">+</span>&nbsp;762<span class="grey--text">.77</span> ',
@@ -46,6 +48,7 @@ new Vue({
           action: 'Поступление на счет'
         },
         {
+          id: 4,
           avatar: 'mdi-minus',
           color: 'red lighten-3',
           title: '<span class="red--text">–</span>&nbsp;10 000<span class="grey--text">.00</span> ',
@@ -54,55 +57,14 @@ new Vue({
           action: 'Перевод со счета'
         },
         {
+          id: 5,
           avatar: 'mdi-undo-variant',
           color: 'blue lighten-3',
           title: '<span class="red--text">–</span>&nbsp;11 000<span class="grey--text">.00</span> ',
           object: 'ООО "ПроКоммерцБанк"',
           subtitle: 'Покупка валюты',
           action: 'ООО "ПроКоммерцБанк"'
-        },
-        // {
-        //   avatar: 'mdi-minus',
-        //   color: 'red lighten-3',
-        //   title: '<span class="red--text">-</span>&nbsp;100 000<span class="grey--text">.00</span> ',
-        //   object: 'ООО "Лучше наличными"',
-        //   subtitle: `ООО "Лучше наличными"`,
-        //   action: 'Перевод со счета'
-        // },
-        // {
-        //   avatar: 'mdi-plus',
-        //   color: 'red lighten-3',
-        //   title: '<span class="green--text">+</span>&nbsp;10 000<span class="grey--text">.00</span> ',
-        //   object: 'ООО "Эс как доллар"',
-        //   subtitle: `ООО "Эс как доллар"`,
-        //   action: 'Перевод со счета'
-        // },
-        { divider: true, inset: true },
-        { header: '06 сентября 2021', amount: '+762<span class="text--disabled">.00&nbsp; / </span>&nbsp;–21 000<span class="text--disabled">.00</span>' },
-        {
-          avatar: 'mdi-plus',
-          color: 'green lighten-3',
-          title: '<span class="green--text">+</span>&nbsp;1 000<span class="grey--text">.00</span> ',
-          object: 'НКО "Все будет хорошо"',
-          subtitle: `НКО "Все будет хорошо"`,
-          action: 'Поступление на счет'
-        },
-        {
-          avatar: 'mdi-minus',
-          color: 'red lighten-3',
-          title: '<span class="red--text">–</span>&nbsp;10 000<span class="grey--text">.00</span> ',
-          object: 'ООО "Эс как доллар"',
-          subtitle: `ООО "Эс как доллар"`,
-          action: 'Перевод со счета'
-        },
-        {
-          avatar: 'mdi-undo-variant',
-          color: 'blue lighten-3',
-          title: '<span class="red--text">–</span>&nbsp;3 000<span class="grey--text">.00</span> ',
-          object: 'ООО "ПроКоммерцБанк"',
-          subtitle: 'Снятие наличных',
-          action: 'ООО "ПроКоммерцБанк"'
-        },
+        }
       ],
     }
   },

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Реквизиты</title>
+
+    <!-- <link rel='stylesheet' href='assets/css/roboto.css'> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> -->
+    <link rel='stylesheet' href='assets/css/materialdesignicons.css'>
+    <link rel='stylesheet' href='assets/css/vuetify.css'>
+    <link rel='stylesheet' href='assets/css/override.css'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+</head>
+
+<body>
+
+    <div id="app" style="visibility:hidden" >
+        <v-app :dark="setTheme">
+
+            <v-app-bar app color="primary" dark>
+                <v-app-bar-nav-icon ></v-app-bar-nav-icon>
+                
+                <v-toolbar-title>Реквизиты</v-toolbar-title>
+                <v-spacer></v-spacer>
+
+                <!-- <v-btn icon>
+                    <v-icon>mdi-share-variant</v-icon>
+                </v-btn> -->
+
+                <!-- <template v-slot:extension>
+                    <v-tabs
+                      v-model="tab"
+                      grow
+                    >
+                      <v-tabs-slider color="yellow"></v-tabs-slider>
+            
+                      <v-tab
+                        v-for="item in tabs"
+                        :key="item"
+                      >
+                        {{ item }}
+                      </v-tab>
+                    </v-tabs>
+                  </template> -->
+            </v-app-bar>
+
+            <v-main>
+                <v-container fluid ma-0 pa-0>
+
+                <v-expansion-panels accordion focusable flat tile v-model="panel">
+
+                    <!-- Первый раздел -->
+                    <v-expansion-panel 
+                        class="ib-expand"
+                        expand 
+                        v-for="(index) in 7"
+                        :key="index"
+                    >
+                        <!-- <v-expansion-panel-header> -->
+                        <v-expansion-panel-header>
+
+                            <!-- <v-list-item-subtitle class="mb-1 grey--text">Расчетный</v-list-item-subtitle> -->
+                            <v-list-item-title >
+                                <div class="mb-1 body-2 grey--text">Расчетный</div>
+                                40702 810 2 7105 4440370
+                            </v-list-item-title>
+
+                        </v-expansion-panel-header>
+                        <v-expansion-panel-content>
+
+
+                            <v-list class="px-6" two-line>
+                                <template v-for="(item, index) in items">
+                        
+                                <v-list-item 
+                                    class="px-0"
+                                    :key="item.title">
+                        
+                                    <v-list-item-content >
+                                        <v-list-item-subtitle class="mb-1 grey--text" v-html="item.subtitle"></v-list-item-subtitle>
+                                        <v-list-item-title >
+                                            {{ item.title}}
+                                        </v-list-item-title>
+                                    </v-list-item-content>
+
+                                </v-list-item>
+                                </template>
+                            </v-list>
+
+                            <div class="px-6" >
+                                <v-btn block large depressed color="primary">
+                                    Поделиться
+                                </v-btn>
+                            </div>
+                            
+
+                            <v-divider class="mt-4"></v-divider>
+
+                        </v-expansion-panel-content>
+                    </v-expansion-panel>
+                </v-container>
+
+            </v-main>
+
+        </v-app>
+    </div>
+
+    <script src='assets/vendors/vue/vue.js'></script>
+    <script src='assets/vendors/vuetify/vuetify.js'></script>
+    <script src="assets/js/requisites.js"></script>
+
+</body>
+
+</html>

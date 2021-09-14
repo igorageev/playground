@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн конвертация валют</title>
+
+    <!-- <link rel='stylesheet' href='assets/css/roboto.css'> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> -->
+    <link rel='stylesheet' href='assets/css/materialdesignicons.css'>
+    <link rel='stylesheet' href='assets/css/vuetify.css'>
+    <link rel='stylesheet' href='assets/css/override.css'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+</head>
+
+<body>
+
+    <div id="app" style="visibility:hidden" >
+        <v-app :dark="setTheme">
+
+            <v-app-bar app color="primary" dark>
+                <v-btn icon>
+                    <v-icon>mdi-arrow-left</v-icon>
+                </v-btn>
+                
+                <v-toolbar-title>40702 810 2 7105 4440370</v-toolbar-title>
+                <v-spacer></v-spacer>
+
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+
+                <template v-slot:extension>
+                    <v-tabs
+                      v-model="tab"
+                      grow
+                    >
+                      <v-tabs-slider color="yellow"></v-tabs-slider>
+            
+                      <v-tab
+                        v-for="tab in tabs"
+                        :key="tab.id"
+                        v-model="activeTab"
+                      >
+                        {{ tab.title }}
+                      </v-tab>
+                    </v-tabs>
+                  </template>
+            </v-app-bar>
+
+            <v-main>
+
+                <v-toolbar
+                    color="grey darken-4"
+                    flat
+                    dark
+                    class="py-0 px-2"
+                >
+                    <span class="grey--text">Период:&nbsp; </span> <span class="grey--text">10.07.2021 - 08.09.2021 </span>
+                    <!-- <v-row class="mt-4">
+
+                        <v-col cols="6">
+                            <v-text-field
+                                value="10.07.2021">
+                            </v-text-field>
+                        </v-col>
+
+                        <v-col cols="6">
+                            <v-text-field
+                                value="08.09.2021">
+                            </v-text-field>
+                        </v-col>
+                    </v-row> -->
+                    <v-spacer></v-spacer>
+                    <v-btn icon>
+                        <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                </v-toolbar>
+
+                <v-toolbar
+                    color="grey darken-4"
+                    flat
+                    dark
+                    class="px-2"
+                >
+                    <span class="grey--text">Входящий остаток:</span> <v-spacer></v-spacer>500 000<span class="grey--text">.00</span>
+                </v-toolbar>
+
+                <v-list one-line>
+                    <template v-for="(item, index) in items">
+                        <v-subheader
+                            
+                            class="justify-space-between px-6"
+                            v-if="item.header"
+                            
+                            
+                        >
+                            {{ item.header }}
+                            <!-- <v-chip v-html="item.amount"></v-chip> -->
+                            <span v-html="item.amount"></span>
+
+                    
+                        </v-subheader>
+              
+                      <v-divider
+                        v-else-if="item.divider"
+                        :key="index"
+                        class="my-4"
+                      ></v-divider>
+              
+                      <v-list-item
+                        class="px-6" 
+                        v-else
+                        :key="item.title"
+                      >
+
+                        <!-- <v-list-item-avatar :color="item.color">
+                            <v-icon
+                              
+                              dark
+                            >
+                              {{ item.avatar }}
+                            </v-icon>
+                        </v-list-item-avatar> -->
+              
+                        <v-list-item-content>
+                          <v-list-item-title >
+                            {{ item.subtitle}}
+                          </v-list-item-title>
+                          <!-- <v-list-item-subtitle v-html="item.action"></v-list-item-subtitle> -->
+                        </v-list-item-content>
+
+                        <v-list-item-action class="pl-5 font-weight-medium" v-html="item.title"></v-list-item-action>
+
+                      </v-list-item>
+                    </template>
+                  </v-list>
+
+            </v-main>
+
+            <v-footer
+                color="grey darken-4"
+                flat
+                fixed
+                class="py-4 px-2"
+                dark
+            >
+                <span class="grey--text">Исходящий остаток:</span> <v-spacer></v-spacer>500 000<span class="grey--text">.00</span>
+            </v-footer>
+
+        </v-app>
+    </div>
+
+    <script src='assets/vendors/vue/vue.js'></script>
+    <script src='assets/vendors/vuetify/vuetify.js'></script>
+    <script src="assets/js/account-period.js"></script>
+
+</body>
+
+</html>

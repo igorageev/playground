@@ -2,6 +2,10 @@
     color: #1B7AD2;
 }
 
+.v-application .blue--text {
+    color: #1B7AD2 !important;
+}
+
 .v-input--is-disabled.v-text-field--outlined fieldset {
     border-style: dashed;
 }
@@ -23,3 +27,15 @@
 .theme--light.v-input--is-disabled textarea {
     color: rgba(0, 0, 0, .5);
 }
+
+.ib-expand .v-expansion-panel-content__wrap {
+    padding: 0 !important;
+}
+
+.v-expansion-panel-header {
+    min-height: 64px;
+}
+
+.v-expansion-panel::before {
+    box-shadow: none !important;
+ }

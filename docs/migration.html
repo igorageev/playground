@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн конвертация валют</title>
+
+    <link rel='stylesheet' href='assets/css/roboto.css'>
+    <link rel='stylesheet' href='assets/css/materialdesignicons.css'>
+    <link rel='stylesheet' href='assets/css/vuetify.css'>
+    <link rel='stylesheet' href='assets/css/override.css'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+</head>
+
+<body>
+
+    <div id="app" style="visibility:hidden;">
+        <v-app id="inspire">
+            <v-navigation-drawer
+                width="320"
+                v-model="drawer"
+                app
+            >
+                <ib-navigation></ib-navigation>
+            </v-navigation-drawer>
+        
+            <v-app-bar app color="primary" dark>
+                <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+            
+                <v-toolbar-title>iBank для бизнеса</v-toolbar-title>
+            </v-app-bar>
+        
+            <v-main>
+                
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src='assets/vendors/vue/vue.js'></script>
+    <script src='assets/vendors/vuetify/vuetify.js'></script>
+    <script src='assets/vendors/httpVueLoader.js'></script>
+    <script src="assets/js/migration-master.js"></script>
+
+</body>
+</html>
