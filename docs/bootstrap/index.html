@@ -11,14 +11,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
 
     <link href="assets/css/override.css" rel="stylesheet">
 </head>
-        
 
-<body class="bg-light">
-    <div class="col-lg-8 g-2 mx-auto px-5 pt-4 pb-5 rounded-3 mt-4" style="background-color: white;">
+
+<body class="bg-light pb-5">
+    <div class="col-lg-8 g-2 mx-auto px-5 pt-4 pb-5 rounded-3 mt-4 " style="background-color: white;">
 
         <div class="row align-items-center">
             <div class="col-8">
@@ -45,19 +47,20 @@
                 </span> -->
                 <h3 class="mb-4">Заявление на смену типа сертификата</h3>
             </div>
-            
+
 
             <div class="row g-3">
                 <div class="col-md-3 col-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control mutable" id="floatingInputGrid" placeholder="Название компании"
-                            value="777">
+                        <input type="text" class="form-control mutable" id="floatingInputGrid"
+                            placeholder="Название компании" value="777">
                         <label for="floatingInputGrid">Номер</label>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
                     <div class="form-floating">
-                        <select class="form-select mutable" id="floatingSelect" aria-label="Floating label select example">
+                        <select class="form-select mutable" id="floatingSelect"
+                            aria-label="Floating label select example">
                             <option selected>30.09.2021</option>
                             <option value="1">01.10.2021</option>
                             <option value="2">02.10.2021</option>
@@ -68,8 +71,8 @@
                 </div>
                 <div class="col-12">
                     <div class="form-floating">
-                        <input type="text" class="form-control mutable" id="floatingInputGrid" placeholder="Название компании"
-                            value="АО “ОТП БАНК” г. Москва">
+                        <input type="text" class="form-control mutable" id="floatingInputGrid"
+                            placeholder="Название компании" value="АО “ОТП БАНК” г. Москва">
                         <label for="floatingInputGrid">Банк</label>
                     </div>
                 </div>
@@ -82,19 +85,53 @@
                 </div>
                 <div class="col-12 col-md-9">
                     <div class="form-floating">
-                        <input type="text" class="form-control mutable" id="floatingInputGrid" placeholder="Название компании"
-                            value="ООО “Демоклиент”">
+                        <input type="text" class="form-control mutable" id="floatingInputGrid"
+                            placeholder="Название компании" value="ООО “Демоклиент”">
                         <label for="floatingInputGrid">Клиент</label>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="">
                         <label for="floatingTextarea2" class="form-label label-small">Условия заявления</label>
-                        <textarea class="form-control mutable" placeholder="Условия заявления на смену типа сертификата" rows="7">Банк и Клиент вместе именуемые "Стороны", заключают соглашение о смене типа сертификата электронной подписи для осуществления электронного документооборота в сети интернет при направлении Клиентом Web-заявки, содержащей персональные данные, и Согласие для рассмотрения возможности предоставления Клиенту услуг. Соглашение является предложением (публичной офертой) АО "ОТП БАНК" заключить соглашение об использовании простой электронной подписи между Банком и физическими лицами.</textarea>
-                        
+                        <textarea class="form-control mutable" placeholder="Условия заявления на смену типа сертификата"
+                            rows="7">Банк и Клиент вместе именуемые "Стороны", заключают соглашение о смене типа сертификата электронной подписи для осуществления электронного документооборота в сети интернет при направлении Клиентом Web-заявки, содержащей персональные данные, и Согласие для рассмотрения возможности предоставления Клиенту услуг. Соглашение является предложением (публичной офертой) АО "ОТП БАНК" заключить соглашение об использовании простой электронной подписи между Банком и физическими лицами.</textarea>
+
                     </div>
                 </div>
             </div>
+
+            <label class="form-label label-small mt-4">Сотрудники</label>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ФИО</th>
+                            <th>Тип ДУЛ</th>
+                            <th>Серия ДУЛ</th>
+                            <th>Номер ДУЛ</th>
+                            <th>Группа подписи</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Воронин Леонид Николаевич</td>
+                            <td>Паспорт РФ</td>
+                            <td>1234</td>
+                            <td>567890</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Громова Надежда Петровна</td>
+                            <td>Паспорт РФ</td>
+                            <td>4321</td>
+                            <td>098765</td>
+                            <td>2</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
 
 
 
@@ -119,10 +156,10 @@
             <div class="bg-accent rounded-3">
                 <form class="row g-2 align-items-center p-3 mt-5 pb-4">
                     <div class="col-12 col-md-4">
-                        <span class="material-icons-outlined align-middle text-secondary me-2">info</span> 
+                        <span class="material-icons-outlined align-middle text-secondary me-2">info</span>
                         <span class="align-middle text-secondary">Не подписан</span>
                     </div>
-                    
+
                     <div class="col-12 col-md-5">
                         <select class="form-select border-white" id="inlineFormSelectPref">
                             <option value="0" selected>Лесков Н.С. – 03.03.2022</option>

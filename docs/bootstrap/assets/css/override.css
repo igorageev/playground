@@ -76,6 +76,15 @@
     margin-left: -20px;
 }
 
+th {
+    font-size: 14px;
+    color: gray;
+    
+}
+th:first-child, td:first-child {
+    padding-left: 13px;
+}
+
 :root {
     --bs-blue: #1B7AD2;
 }
