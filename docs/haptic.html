@@ -7,7 +7,7 @@
         <style>
             svg {
                 width: 50%;
-                height: 50%;
+                height: 20%;
                 margin-left: 15%;
                 fill: white;
             }
@@ -54,45 +54,30 @@
         </svg>
 
         <script>
-            // Текущая модель вибрации
-            var curVibe = 0;
             // Таймер события
-            var tmint;
+            var intervalId;
             // initHaptics() должен вызываться при загрузке веб-страницы
             function initHaptics() {
                 // Прослушивание событий touchmove и touchend
-                document.body.addEventListener("touchmove", buzzPos, false);
-                document.body.addEventListener("touchend", buzzStop, false);
+                let target = document.getElementById('touchme')
+                target.addEventListener("touchstart", buzzPos, false);
+                target.addEventListener("touchend", buzzStop, false);
+            }
+            function buzzPos() {
                 // Установка отсрочки события
-                // Следует настраивать этот интервал так, чтобы он соответствовал длительности шаблона вибрации.
-                tmint = window.setInterval(buzzTime, 150);
+                intervalId = window.setInterval(buzzTime, 1000);
             }
             function buzzTime() {
                 // вызов вибрации
+                clearInterval(intervalId);
                 document.body.classList.toggle('yellow');
-                window.navigator.vibrate(curVibe);
-            }
-            function buzzPos(event) {
-                // Это позволяет задействовать вибрацию в Chrome Beta для Android
-                event.preventDefault();
-                // Найти нужный элемент
-                let e = document.elementFromPoint(
-                    event.touches.item(0).clientX,
-                    event.touches.item(0).clientY
-                );
-                curVibe = 0;
-                if (e.id == "touchme") {
-                    curVibe = 100;
-                    document.body.classList.toggle('yellow');
-                    window.navigator.vibrate(curVibe);
-                }
+                window.navigator.vibrate([10, 50, 20, 50]);
             }
             function buzzStop() {
-                // Это позволяет задействовать вибрацию в Chrome Beta для Android
                 event.preventDefault();
                 // Остановка вибрации
+                clearInterval(intervalId);
                 window.navigator.vibrate(0);
-                curVibe = 0;
             }
         </script>
     </body>
