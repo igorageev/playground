@@ -55,34 +55,44 @@
 
         <script>
             // Текущая модель вибрации
-            var curVibe = 150;
+            var curVibe = 0;
             // Таймер события
             var tmint;
             // initHaptics() должен вызываться при загрузке веб-страницы
             function initHaptics() {
-                // Объект нажатия
-                let touchElement = document.getElementById('touchme');
                 // Прослушивание событий touchmove и touchend
-                touchElement.addEventListener("touchmove", buzzPos, false);
-                touchElement.addEventListener("touchend", buzzStop, false);
+                document.body.addEventListener("touchmove", buzzPos, false);
+                document.body.addEventListener("touchend", buzzStop, false);
                 // Установка отсрочки события
                 // Следует настраивать этот интервал так, чтобы он соответствовал длительности шаблона вибрации.
                 tmint = window.setInterval(buzzTime, 150);
             }
             function buzzTime() {
                 // вызов вибрации
+                document.body.classList.toggle('yellow');
                 window.navigator.vibrate(curVibe);
             }
             function buzzPos(event) {
                 // Это позволяет задействовать вибрацию в Chrome Beta для Android
                 event.preventDefault();
+                // Найти нужный элемент
+                let e = document.elementFromPoint(
+                    event.touches.item(0).clientX,
+                    event.touches.item(0).clientY
+                );
+                curVibe = 0;
+                if (e.id == "touchme") {
+                    curVibe = 100;
+                    document.body.classList.toggle('yellow');
+                    window.navigator.vibrate(curVibe);
+                }
             }
             function buzzStop() {
                 // Это позволяет задействовать вибрацию в Chrome Beta для Android
                 event.preventDefault();
                 // Остановка вибрации
                 window.navigator.vibrate(0);
-                document.body.classList.toggle('yellow');
+                curVibe = 0;
             }
         </script>
     </body>
