@@ -65,8 +65,8 @@
                 target.addEventListener("touchend", buzzStop, false);
             }
             function buzzPos() {
-                // Установка отсрочки ответного действия
-                intervalId = window.setInterval(buzzTime, 1000);
+                // Установка отсрочки события
+                intervalId = window.setTimeout(buzzTime, 1000);
             }
             function buzzTime() {
                 // вызов вибрации
@@ -76,9 +76,8 @@
             }
             function buzzStop() {
                 event.preventDefault();
-                // Остановка таймера если элемент отпущен раньше
-                clearInterval(intervalId);
-                window.navigator.vibrate(0);
+                // Остановка таймера
+                clearTimeout(intervalId);
             }
         </script>
     </body>
