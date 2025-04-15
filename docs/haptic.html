@@ -90,7 +90,7 @@
             // Уборка после завершения анимации
             function finish() {
                 target.classList.remove('shake');
-                target.removeEventListener("animationend", handler, false);
+                target.removeEventListener("animationend", finish, false);
             }
         </script>
     </body>
