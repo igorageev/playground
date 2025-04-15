@@ -27,10 +27,20 @@
                 justify-content: center;
             }
             .yellow {
-                background-color: #FFDD00;
+                background-color: #ffdd00;
             }
             .yellow svg {
-                fill: #D10A11;
+                fill: #d10a11;
+            }
+            .shake {
+                animation: vertical-shaking 0.35s;
+            }
+            @keyframes vertical-shaking {
+                0% {transform: translateY(0);}
+                25% {transform: translateY(10px);}
+                50% {transform: translateY(-10px);}
+                75% {transform: translateY(10px);}
+                100% {transform: translateY(0);}
             }
         </style>
     </head>
@@ -46,38 +56,41 @@
             <path
                 d="M23.2222 19.0709C22.3474 19.0128 21.3387 18.8598 20.543 18.63C20.394 18.5869 19.7769 18.3607 19.62 18.2889C16.8501 17.0093 14.9204 14.2159 14.9204 10.9752C14.9204 6.53027 18.5464 2.90968 23.0062 2.90968C27.4264 2.90968 31.028 6.46852 31.0899 10.8632H34.011C33.9491 4.86288 29.0379 0 23.0062 0C16.9386 0 12 4.92248 12 10.9752C12 15.148 14.353 18.7772 17.7983 20.6313C18.4204 20.9595 19.3133 21.2977 19.6164 21.3903C20.5985 21.6819 21.8038 21.8758 22.8766 21.9569C23.241 21.9842 24.5132 21.9986 24.8841 22H45V19.0982H24.9179C24.6508 19.0982 23.4836 19.0882 23.2222 19.0709ZM24.9179 14.5147C24.7055 14.5147 23.5945 14.5075 23.3893 14.4903C23.0415 14.4608 22.5375 14.4091 22.2135 14.3352C21.8477 14.2375 21.5043 14.1082 21.3495 14.0235C20.2644 13.4383 19.5249 12.2936 19.5249 10.9752C19.5249 9.05722 21.0823 7.50184 23.0062 7.50184C24.8898 7.50184 26.4213 8.99618 26.4825 10.8632H29.2891C29.2301 7.4523 26.4422 4.70346 23.0062 4.70346C19.5321 4.70346 16.7161 7.51118 16.7161 10.9752C16.7161 13.4182 18.1202 15.5279 20.165 16.5612C20.4797 16.745 21.0715 16.9375 21.24 16.9813C21.8175 17.1328 22.5929 17.2362 23.2222 17.2822C23.4548 17.3016 24.5939 17.3102 24.8344 17.3116L44.9993 17.3159V14.5147H24.9179Z"
             />
-            <path
-                d="M7.19044 22H10V0H3.08478V2.93252H7.19044V22Z"
-            />
-            <path
-                d="M0 7.21752V4.39771H5.78426V22H3.08476V7.21752H0Z"
-            />
+            <path d="M7.19044 22H10V0H3.08478V2.93252H7.19044V22Z" />
+            <path d="M0 7.21752V4.39771H5.78426V22H3.08476V7.21752H0Z" />
         </svg>
 
         <script>
-            // Таймер события
-            var intervalId;
+            let intervalId; // Таймер события
+            let target = document.getElementById("touchme"); // Кнопка
+
             // initHaptics() должен вызываться при загрузке веб-страницы
+            // Прослушивание событий касания и отпускания
             function initHaptics() {
-                // Прослушивание событий касания и отпускания
-                let target = document.getElementById('touchme')
                 target.addEventListener("touchstart", buzzPos, false);
                 target.addEventListener("touchend", buzzStop, false);
             }
+            // Установка отсрочки события
             function buzzPos() {
-                // Установка отсрочки события
                 intervalId = window.setTimeout(buzzTime, 1000);
             }
+            // вызов вибрации и анимации
             function buzzTime() {
-                // вызов вибрации
                 clearInterval(intervalId);
-                document.body.classList.toggle('yellow');
+                document.body.classList.toggle("yellow");
+                target.classList.add('shake');
+                target.addEventListener("animationend", finish, false);
                 window.navigator.vibrate([10, 50, 20, 50]);
             }
+            // Остановка таймера
             function buzzStop() {
                 event.preventDefault();
-                // Остановка таймера
                 clearTimeout(intervalId);
+            }
+            // Уборка после завершения анимации
+            function finish() {
+                target.classList.remove('shake');
+                target.removeEventListener("animationend", handler, false);
             }
         </script>
     </body>
