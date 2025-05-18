@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru" class="theme-light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Карусель: демо</title>
+    <script type="module" crossorigin src="/assets/main-DQXt4QZK.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DPBzNL79.css">
+  </head>
+  <body>
+    <div id="app">
+
+      <header>
+        <h1 class="header">Демонстрация</h1>
+      </header>
+  
+      <section class="embla column_2" id="simple">
+        
+        <div class="embla__viewport">
+          <div class="embla__container">
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #3EE568">1</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #C85CFF">2</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #5DCFFC">3</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #7C79FC">4</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #FFDD00">5</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #FF675E">6</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #FFB54D">7</div>
+            </div>
+            <div class="embla__slide">
+              <div class="embla__slide__number" style="background: #55A4FA">8</div>
+            </div>
+          </div>
+        </div>
+        <div class="embla__shadow"></div>
+        <div class="embla__controls">
+          <div><p>Название карусели</p></div>
+          <!-- <div class="embla__buttons">
+            <button class="embla__button embla__button--prev" type="button">❮</button>
+
+          </div> -->
+            
+          <div class="embla__dots"></div>
+
+          <div class="embla__buttons">
+            <button class="embla__button embla__button--prev material-symbols-outlined" type="button">chevron_left</button>
+            <button class="embla__button embla__button--next material-symbols-outlined" type="button">chevron_right</button>
+          </div>
+        </div>
+      </section>
+
+      <fieldset>
+        <legend>Опции поведения:</legend>
+
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="dragFree" name="dragFree" />
+            <span class="slider"></span>
+            <label for="dragFree">Свободное перетаскивание</label>
+          </label>
+        </div>
+
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="loop" name="loop" />
+            <span class="slider"></span>
+            <label for="loop">Зацикливание</label>
+          </label>
+        </div>
+
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="slidesToScroll" name="slidesToScroll" />
+            <span class="slider"></span>
+            <label for="slidesToScroll">Листание по одному</label>
+          </label>
+        </div>
+
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="align" name="align" disabled />
+            <span class="slider"></span>
+            <label for="align">Выравнивание по центру</label>
+          </label>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Настройки представления:</legend>
+
+        <div class="textfield">
+          <input
+              class="value-input"
+              max="4"
+              min="1"
+              type="number"
+              value="2"
+              name="columnCount"
+              id="columnCount"
+          />
+          <button
+              class="value-control material-symbols-outlined"
+              onclick="columnCount.stepUp()"
+              title="Increase value"
+              aria-label="Increase value"
+              id="increaseColumns"
+          >keyboard_arrow_up</button>
+          <button
+              class="value-control material-symbols-outlined"
+              onclick="columnCount.stepDown()"
+              title="Decrease value"
+              aria-label="Decrease value"
+              id="decreaseColumns"
+          >keyboard_arrow_down</button>
+        </div>
+
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="clip" name="clip" checked />
+            <span class="slider"></span>
+            <label for="clip">Кадрирование</label>
+          </label>
+        </div>
+
+        <div>
+          <label class="switch">
+            <input type="checkbox" id="fade" name="fade" />
+            <span class="slider"></span>
+            <label for="fade">Рассеивание</label>
+          </label>
+        </div>
+
+        <div class="section">
+          <h4>Панель управления:</h4>
+          <div class="input-group">
+              <label>
+                  <input type="radio" id="panelBottom" name="panel" checked>
+                  Внизу
+              </label>
+              <label>
+                  <input type="radio" id="panelUp" name="panel">
+                  Вверху
+              </label>
+              <label>
+                  <input type="radio" id="panelOff" name="panel">
+                  Отсутствует
+              </label>
+          </div>
+      </div>
+
+      </fieldset>
+  
+      <footer class="footer">
+        
+        <!-- <a class="footer__link" href="https://github.com/davidjerleke/embla-carousel">
+          <span class="footer__link__text">Специально для 1С</span>
+        </a> -->
+      </footer>
+      <!-- <a href="nested/">Ссылка</a> -->
+    </div>
+  </body>
+</html>
